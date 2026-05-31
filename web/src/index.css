@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/sora";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+@theme inline {
+  --font-heading: 'Sora Variable', 'Inter Variable', sans-serif;
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Paleta Rumbo Labs: dorado (hsl 45) + azul marino (hsl 220). */
+/* Paleta Rumbo Labs (rebrand): terracota (25 55% 52%) + crema/negro. */
+:root {
+  --background: hsl(44 35% 94%);
+  --foreground: hsl(0 0% 7%);
+  --card: hsl(43 41% 97%);
+  --card-foreground: hsl(0 0% 7%);
+  --popover: hsl(43 41% 97%);
+  --popover-foreground: hsl(0 0% 7%);
+  --primary: hsl(25 55% 52%);
+  --primary-foreground: hsl(44 35% 94%);
+  --secondary: hsl(222 11% 18%);
+  --secondary-foreground: hsl(44 35% 94%);
+  --muted: hsl(39 28% 90%);
+  --muted-foreground: hsl(222 11% 18%);
+  --accent: hsl(32 57% 77%);
+  --accent-foreground: hsl(0 0% 7%);
+  --destructive: hsl(12 52% 47%);
+  --border: hsl(33 37% 76%);
+  --input: hsl(33 37% 76%);
+  --ring: hsl(25 55% 52%);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.875rem;
+  --sidebar: hsl(43 41% 97%);
+  --sidebar-foreground: hsl(0 0% 7%);
+  --sidebar-primary: hsl(25 55% 52%);
+  --sidebar-primary-foreground: hsl(44 35% 94%);
+  --sidebar-accent: hsl(39 28% 90%);
+  --sidebar-accent-foreground: hsl(0 0% 7%);
+  --sidebar-border: hsl(33 37% 76%);
+  --sidebar-ring: hsl(25 55% 52%);
+}
+
+.dark {
+  --background: hsl(0 0% 7%);
+  --foreground: hsl(44 35% 94%);
+  --card: hsl(0 0% 9%);
+  --card-foreground: hsl(44 35% 94%);
+  --popover: hsl(0 0% 9%);
+  --popover-foreground: hsl(44 35% 94%);
+  --primary: hsl(25 55% 52%);
+  --primary-foreground: hsl(44 35% 94%);
+  --secondary: hsl(222 11% 18%);
+  --secondary-foreground: hsl(44 35% 94%);
+  --muted: hsl(0 0% 9%);
+  --muted-foreground: hsl(33 37% 76%);
+  --accent: hsl(32 57% 77%);
+  --accent-foreground: hsl(0 0% 7%);
+  --destructive: hsl(12 52% 47%);
+  --border: hsl(0 0% 23%);
+  --input: hsl(0 0% 23%);
+  --ring: hsl(25 55% 52%);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: hsl(0 0% 9%);
+  --sidebar-foreground: hsl(44 35% 94%);
+  --sidebar-primary: hsl(25 55% 52%);
+  --sidebar-primary-foreground: hsl(44 35% 94%);
+  --sidebar-accent: hsl(222 11% 18%);
+  --sidebar-accent-foreground: hsl(44 35% 94%);
+  --sidebar-border: hsl(0 0% 23%);
+  --sidebar-ring: hsl(25 55% 52%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

@@ -1,0 +1,6 @@
+{"type":"attachment","sessionId":"test-uuid-1","cwd":"/home/u/proj","timestamp":"2026-05-22T10:00:00.000Z"}
+{"type":"user","sessionId":"test-uuid-1","cwd":"/home/u/proj","timestamp":"2026-05-22T10:00:01.000Z","message":{"role":"user","content":"hola claude"}}
+{"type":"assistant","sessionId":"test-uuid-1","cwd":"/home/u/proj","timestamp":"2026-05-22T10:00:02.000Z","message":{"role":"assistant","content":[{"type":"text","text":"¡Hola! ¿En qué te ayudo?"}]}}
+{"type":"user","sessionId":"test-uuid-1","timestamp":"2026-05-22T10:00:03.000Z","message":{"role":"user","content":[{"type":"tool_result","content":"x"}]}}
+{"type":"ai-title","sessionId":"test-uuid-1","aiTitle":"Saludo inicial"}
+{ malformed json line

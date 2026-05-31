@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      # node-pty compiles native code; build tools are preinstalled on
+      # ubuntu-latest (build-essential + python3).
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint (web)
+        run: pnpm --filter web lint
+
+      - name: Typecheck (server)
+        run: pnpm --filter server exec tsc -p tsconfig.json --noEmit
+
+      - name: Test
+        run: pnpm test
+
+      # `web build` runs `tsc -b && vite build`, so it also typechecks the web app.
+      - name: Build (web)
+        run: pnpm --filter web build
