@@ -39,3 +39,27 @@ jobs:
       # `web build` runs `tsc -b && vite build`, so it also typechecks the web app.
       - name: Build (web)
         run: pnpm --filter web build
+
+  # The merge gate: one check name shared across every RumboLabs repo.
+  #
+  # This job runs nothing of its own. It exists so the organization ruleset can
+  # require a single context — `ci` — everywhere, instead of one rule per repo.
+  # GitHub has no "all checks must pass" option: `required_status_checks` is a
+  # list of literal names, and the one rule that would avoid naming them
+  # (`workflows`) is Enterprise Cloud only.
+  #
+  # `if: always()` is load-bearing: without it a failing `check` would leave
+  # this job unexecuted, the required check would never report, and the PR
+  # would hang on "Expected — Waiting for status to be reported" instead of
+  # failing. The job must always run; the step below is what decides.
+  ci:
+    needs: [check]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify previous jobs
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: |
+          echo "A required check did not pass — see the jobs above."
+          exit 1
