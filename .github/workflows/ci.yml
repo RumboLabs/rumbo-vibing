@@ -9,6 +9,11 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      # TEMPORAL — rama de usar y tirar para comprobar que el job `ci` se pone
+      # en rojo cuando `check` falla. Esta rama se borra tras la comprobación.
+      - name: Forzar fallo
+        run: exit 1
+
       - uses: actions/checkout@v4
 
       - name: Setup pnpm
